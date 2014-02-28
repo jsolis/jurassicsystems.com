@@ -45,13 +45,13 @@
             var beepChrome = $('<audio preload="auto"/>'),
                 lockDownChrome = $('<audio preload="auto"/>');
 
-            beepChrome.append('<source src="/snd/beep.ogg">');
-            beepChrome.append('<source src="/snd/beep.mp3">');
-            beepChrome.append('<source src="/snd/beep.wav">');
+            beepChrome.append('<source src="snd/beep.ogg">');
+            beepChrome.append('<source src="snd/beep.mp3">');
+            beepChrome.append('<source src="snd/beep.wav">');
 
-            lockDownChrome.append('<source src="/snd/lockDown.ogg">');
-            lockDownChrome.append('<source src="/snd/lockDown.mp3">');
-            lockDownChrome.append('<source src="/snd/lockDown.wav">');
+            lockDownChrome.append('<source src="snd/lockDown.ogg">');
+            lockDownChrome.append('<source src="snd/lockDown.mp3">');
+            lockDownChrome.append('<source src="snd/lockDown.wav">');
 
             env.sounds.beep = {
                play: function() {
@@ -87,13 +87,13 @@
                   env.sounds.beep = sm.createSound({
                      id: 'beep',
                      autoLoad: true,
-                  url: '/snd/beep.mp3'
+                  url: 'snd/beep.mp3'
                   });
 
                   env.sounds.lockDown = sm.createSound({
                      id: 'lockDown',
                      autoLoad: true,
-                     url: '/snd/lockDown.mp3'
+                     url: 'snd/lockDown.mp3'
                   });
                }
             });
@@ -116,7 +116,7 @@
 
          return;
       } else if (inputLine.split(' ').length > 2 && magicWord.trim() === 'please') {
-         $('#main-input').append($('<img id="asciiNewman" src="/img/asciiNewman.jpg" />'));
+         $('#main-input').append($('<img id="asciiNewman" src="img/asciiNewman.jpg" />'));
          $('#asciiNewman').load(function() {
             $('#' + env.active + ' .inner-wrap').scrollTop($('#' + env.active + ' .inner-wrap')[0].scrollHeight);
          });
@@ -153,7 +153,7 @@
                      }
 
                      $('#the-king-window').ready(function() {
-                        $('#mac-hd-window').css('background-image', 'url(/img/macHDBlur.jpg)');
+                        $('#mac-hd-window').css('background-image', 'url(img/macHDBlur.jpg)');
                         $('#the-king-window').show();
                         if ($(window).width() < 1200) {
                            setTimeout(function() {
@@ -233,6 +233,10 @@
       });
    });
 
+   JPTERMINAL.addCommand('flybot', function(env, inputLine) {
+      $('#main-input').append($('<div>flybot executing ' + inputLine + '</div>'));
+   });
+
    // helpers
    var flicker = function(altId, interval, duration) {
       var visible = true,
@@ -271,11 +275,11 @@
          'macHDBlur.jpg',
          'asciiNewman.jpg',
          'zebraGirlWindow.jpg']).each(function() {
-            new Image().src = '/img/' + this;
+            new Image().src = 'img/' + this;
          });
 
       $.ajax({
-         url : '/swf/theKing.swf'
+         url : 'swf/theKing.swf'
       });
 
       // remove boot screen
