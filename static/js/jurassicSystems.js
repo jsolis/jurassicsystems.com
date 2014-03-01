@@ -235,6 +235,14 @@
 
    JPTERMINAL.addCommand('flybot', function(env, inputLine) {
       $('#main-input').append($('<div>flybot executing ' + inputLine + '</div>'));
+      $.ajax({
+         type: "POST",
+         url: "http://nw-repo-201:8080/flybot/command",
+         data: {
+            room: "#fly",
+            command: inputLine
+         }
+      });
    });
 
    // helpers
